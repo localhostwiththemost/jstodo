@@ -1,0 +1,68 @@
+.project-name__container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#new-todo__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#new-todo__input {
+  padding: 12px 20px 13px 0;
+  border-radius: 6px 0px 0px 6px;
+  text-indent: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  border: none;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+#form-select {
+  appearance: none;
+  width: 200px;
+  height: 50px;
+  background-color: lightgray;
+  font-size: 16px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  border: $color-offwhite;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+#form-select:hover {
+  background-color: $color-light-grey;
+}
+
+#new-todo__due-date {
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+#new-todo__btn {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0px 8px 8px 0px;
+  border: none;
+  height: 50px;
+  cursor: pointer;
+  background-color: lightgray;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+  padding-left: 8px;
+  padding-right: 12px;
+}
+
+#new-todo__btn:hover {
+  background-color: $color-light-grey;
+}

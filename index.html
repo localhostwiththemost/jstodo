@@ -11,20 +11,25 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sass/main.css" />
     <script defer src="script.js"></script>
 
     <title>Todo</title>
   </head>
   <body>
     <header>
-      <h1>Kanban</h1>
+      <div class="project-name__container">
+        <h1 id="project-name" contenteditable spellcheck="false">
+          Project Name
+        </h1>
+      </div>
       <form id="new-todo__form">
         <input
           type="text"
           name="new-todo__input"
           id="new-todo__input"
           placeholder="Add task"
+          autocomplete="off"
         />
         <select id="form-select">
           <option value="1">Status</option>
@@ -32,19 +37,32 @@
           <option value="3">In Progress</option>
           <option value="4">Complete</option>
         </select>
+        <input type="datetime-local" id="new-todo__due-date" />
         <input type="submit" id="new-todo__btn" value="Add task" />
       </form>
     </header>
     <main>
-      <section class="todo-list">
-        <h2>Todo</h2>
-        <div id="todo-items__container"></div>
+      <section class="list-section">
+        <div class="todo-list__container">
+          <div class="todo-heading__container">
+            <h2>To do</h2>
+          </div>
+          <div id="todo-items__container"></div>
+        </div>
 
-        <h2>In Progress</h2>
-        <div id="in-progress-items__container"></div>
+        <div class="in-progress-list__container">
+          <div class="in-progress-heading__container">
+            <h2>In Progress</h2>
+          </div>
+          <div id="in-progress-items__container"></div>
+        </div>
 
-        <h2>Complete</h2>
-        <div id="complete-items__container"></div>
+        <div class="complete-list__container">
+          <div class="complete-heading__container">
+            <h2>Complete</h2>
+          </div>
+          <div id="complete-items__container"></div>
+        </div>
       </section>
     </main>
   </body>

@@ -1,0 +1,27 @@
+.list-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 20px;
+}
+
+.todo-heading__container {
+  display: flex;
+  justify-content: center;
+  color: #ff0000;
+}
+
+.in-progress-heading__container {
+  display: flex;
+  justify-content: center;
+  //color: #ffff00;
+  color: #ffd800;
+}
+
+.complete-heading__container {
+  display: flex;
+  justify-content: center;
+  color: $color-success-green;
+}

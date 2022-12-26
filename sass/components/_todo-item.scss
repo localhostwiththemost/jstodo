@@ -1,0 +1,69 @@
+input {
+  accent-color: #32cd32;
+}
+
+input[type="checkbox"] {
+  margin: 10px;
+}
+
+#todo-input {
+  padding: 8px 10px 8px 0;
+  border-radius: 6px 0 0 6px;
+  text-indent: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  border: none;
+}
+
+#todo_el {
+  border-radius: 8px;
+  padding: 10px 5px;
+  color: black;
+  margin-bottom: 8px;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+
+  & button {
+    cursor: pointer;
+  }
+
+  & select {
+    appearance: none;
+    width: 150px;
+    height: 41px;
+    background-color: lightgray;
+    font-size: 16px;
+    padding: 8px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    border: $color-offwhite;
+    margin-left: 10px;
+  }
+
+  & select:hover {
+    background-color: $color-light-grey;
+  }
+}
+
+.edit-btn {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0px 8px 8px 0px;
+  border: none;
+  height: 41px;
+  background-color: lightgray;
+  padding-right: 12px;
+  padding-left: 8px;
+
+  &:hover {
+    background-color: $color-light-grey;
+  }
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 10px;
+}
