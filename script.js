@@ -33,25 +33,16 @@ window.addEventListener("load", () => {
     // Each todo item is assigned a unique date key when set in localStorage
     const key = Date.now();
 
-    const dateValue = dateInput.value;
-    const dateObj = new Date(dateValue);
+    const date = dateInput.value;
 
-    const locale = navigator.language;
-    const options = {
-      dateStyle: "short",
-    };
-    const formattedDate = dateObj.toLocaleDateString(locale, options);
-
-    // Each value in LS is set to an object with a todo property whose value is the value of the todo input, a container property whose default value is 'default' and an isChecked property whose default value is false
+    // Each value in LS is set to an object with a todo property whose value is the value of the todo input, a container property whose default value is null, an isChecked property whose default value is false, a dueDate property whose value is the date the user inputs and a daysUntilDueDate property whose default value is null
     const value = {
       todo: todo,
-      container: "default",
+      container: null,
       isChecked: false,
-      dueDate: formattedDate,
+      dueDate: date,
+      daysUntilDueDate: null,
     };
-
-    const date = dateInput.value;
-    //console.log(date);
 
     const checkboxInput = document.createElement("input");
     checkboxInput.type = "checkbox";
@@ -231,29 +222,40 @@ window.addEventListener("load", () => {
     }
 
     const currentDate = new Date();
-    const dueDate = new Date(dateValue);
+    const dueDate = new Date(date);
 
-    const dueDateEl = document.createElement("div");
-    const daysLeft = document.createElement("div");
+    const timeUntilDueDate = dueDate.getTime() - currentDate.getTime();
+    const daysUntilDueDate = Math.ceil(
+      timeUntilDueDate / (1000 * 60 * 60 * 24)
+    );
 
-    const timeDiff = Math.abs(dueDate - currentDate);
-    const diffDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const daysLeft = document.createElement("p");
+    daysLeft.classList.add("days-left");
 
-    if (diffDays === 0) {
-      //alert("Due today");
-      dueDateEl.textContent = `${dueDate}`;
-      daysLeft.textContent = `Due today`;
-    } else {
-      alert(`${diffDays} days left`);
+    if (daysUntilDueDate > 1) {
+      daysLeft.innerText = `Due in ${daysUntilDueDate} days`;
+      lsObj.daysUntilDueDate = daysUntilDueDate;
+      localStorage.setItem(key, JSON.stringify(lsObj));
+    } else if (daysUntilDueDate === 1) {
+      daysLeft.innerText = `Due tomorrow`;
+      lsObj.daysUntilDueDate = daysUntilDueDate;
+      localStorage.setItem(key, JSON.stringify(lsObj));
+    } else if (daysUntilDueDate === 0) {
+      daysLeft.innerText = `Due today`;
+      lsObj.daysUntilDueDate = daysUntilDueDate;
+      localStorage.setItem(key, JSON.stringify(lsObj));
+    } else if (daysUntilDueDate < 0) {
+      daysLeft.innerText = `Past due`;
+      lsObj.daysUntilDueDate = daysUntilDueDate;
+      localStorage.setItem(key, JSON.stringify(lsObj));
     }
 
     if (date) {
-      todo_el.appendChild(dueDateEl);
       todo_el.appendChild(daysLeft);
     }
 
-    // Clear input after submit
-    input.value = "";
+    // Clear all form input fields after submit
+    form.reset();
   });
 
   // Loop over localstorage and create a todo item for each todo that has been saved
@@ -354,13 +356,43 @@ window.addEventListener("load", () => {
         }
       });
 
+      // Element on each todo item that displays when the item is due
+      const savedDaysLeft = document.createElement("p");
+      savedDaysLeft.classList.add("days-left");
+
       savedTodoContent.appendChild(savedCheckbox);
       savedTodoContent.appendChild(savedTodoInput);
       savedTodoContent.appendChild(savedTodoEdit);
       savedTodoContent.appendChild(savedSelectInput);
       savedTodoContent.appendChild(savedTodoDelete);
 
+      // Change the saved date in LS to a Date object
+      const dueDate = new Date(lsValue.dueDate);
+
+      // Update the days until due date by subtracting today's date from the due date
+      lsValue.daysUntilDueDate = Math.ceil(
+        (dueDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+      );
+      localStorage.setItem(lsKey, JSON.stringify(lsValue));
+
+      if (lsValue.daysUntilDueDate > 1) {
+        savedDaysLeft.innerText = `Due in ${lsValue.daysUntilDueDate} days`;
+      } else if (lsValue.daysUntilDueDate === 1) {
+        savedDaysLeft.innerText = `Due tomorrow`;
+      } else if (lsValue.daysUntilDueDate === 0) {
+        savedDaysLeft.innerText = `Due today`;
+      } else if (lsValue.daysUntilDueDate < 0) {
+        savedDaysLeft.innerText = `Past due`;
+      }
+
       savedTodoEl.appendChild(savedTodoContent);
+
+      if (
+        typeof lsValue.daysUntilDueDate !== "null" ||
+        lsValue.daysUntilDueDate === 0
+      ) {
+        savedTodoEl.appendChild(savedDaysLeft);
+      }
 
       if (lsValue.container === "todoContainer") {
         todoContainer.appendChild(savedTodoEl);

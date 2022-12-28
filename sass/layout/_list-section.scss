@@ -11,17 +11,19 @@
   display: flex;
   justify-content: center;
   color: #ff0000;
+  font-size: 2rem;
 }
 
 .in-progress-heading__container {
   display: flex;
   justify-content: center;
-  //color: #ffff00;
   color: #ffd800;
+  font-size: 2rem;
 }
 
 .complete-heading__container {
   display: flex;
   justify-content: center;
   color: $color-success-green;
+  font-size: 2rem;
 }

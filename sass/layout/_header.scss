@@ -1,7 +1,9 @@
 .project-name__container {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 20px;
+  font-size: 2.2rem;
 }
 
 input:focus {
@@ -12,30 +14,41 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 40px;
 }
 
 #new-todo__input {
-  padding: 12px 20px 13px 0;
+  min-width: 100px;
+  height: 50px;
   border-radius: 6px 0px 0px 6px;
   text-indent: 8px;
   font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-size: 1.6rem;
   border: none;
   box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 1200px) {
+    height: 45px;
+  }
 }
 
 #form-select {
   appearance: none;
-  width: 200px;
+  max-width: 200px;
   height: 50px;
   background-color: lightgray;
-  font-size: 16px;
+  font-size: 1.6rem;
   padding: 10px;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   border: $color-offwhite;
   box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 1200px) {
+    height: 45px;
+  }
 }
 
 #form-select:hover {
@@ -44,14 +57,19 @@ input:focus {
 
 #new-todo__due-date {
   height: 50px;
+  min-width: 18px;
   border: none;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 1200px) {
+    height: 45px;
+  }
 }
 
 #new-todo__btn {
-  font-size: 16px;
+  font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
   border-radius: 0px 8px 8px 0px;
   border: none;
@@ -61,6 +79,10 @@ input:focus {
   box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
   padding-left: 8px;
   padding-right: 12px;
+
+  @media only screen and (max-width: 1200px) {
+    height: 45px;
+  }
 }
 
 #new-todo__btn:hover {

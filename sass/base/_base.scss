@@ -3,6 +3,47 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  // DEFINES WHAT 1 REM IS
+  font-size: 62.5%; /*62.5% of 16px = 10px (We use a % to be more user friendly, 16px is default)*/
+  /*Global font-size (Each rem unit is now 10px)*/
+  // 1 REM = 10px
+
+  // FOR MEDIA QUERIES
+  // @include respond(big-desktop) {
+  //   // width > 1800px
+  //   font-size: 75%; // 1rem = 12px, 12/16 = 75%
+  // }
+
+  // @include respond(tab-landscape) {
+  //   // width < 1200px?
+  //   font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  // }
+
+  // @include respond(tab-portrait) {
+  //   // width < 900px?
+  //   // When we include this media query with the argument tab-portrait, the browser will find the appropriately named query
+  //   font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  // }
+
+  @media only screen and (min-width: 1800px) {
+    font-size: 75%;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 56.25%;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 50%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 37.5%;
+  }
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: $color-offwhite;
