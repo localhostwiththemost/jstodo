@@ -1,3 +1,7 @@
+[contenteditable] {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
 .project-name__container {
   display: -webkit-box;
   display: -ms-flexbox;
