@@ -38,6 +38,7 @@ input[type="checkbox"] {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 8px;
+  -webkit-box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
 
   @media only screen and (max-width: 375px) {
@@ -51,6 +52,8 @@ input[type="checkbox"] {
   }
 
   & select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     width: 150px;
     height: 41px;
