@@ -35,15 +35,21 @@
           id="new-todo__input"
           placeholder="Add task"
           autocomplete="off"
+          aria-label="Add Task"
         />
-        <select id="form-select">
+        <select id="form-select" aria-label="Task status selection">
           <option value="1">Status</option>
           <option value="2">Todo</option>
           <option value="3">In Progress</option>
           <option value="4">Complete</option>
         </select>
-        <input type="date" id="new-todo__due-date" />
-        <input type="submit" id="new-todo__btn" value="Add task" />
+        <input type="date" id="new-todo__due-date" aria-label="Date input" />
+        <input
+          type="submit"
+          id="new-todo__btn"
+          value="Add task"
+          aria-label="Submit form"
+        />
       </form>
     </header>
     <main>
