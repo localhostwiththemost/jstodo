@@ -14,6 +14,11 @@ window.addEventListener("load", () => {
     "#complete-items__container"
   );
 
+  // If projectName isn't defined in LS, set its value to "Project Name"
+  if (!localStorage.getItem("projectName")) {
+    localStorage.setItem("projectName", "Project Name");
+  }
+
   // When the project name is changed, add the name of the project to localStorage
   projectName.addEventListener("input", function () {
     localStorage.setItem("projectName", projectName.textContent);
